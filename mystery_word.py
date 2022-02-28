@@ -1,6 +1,10 @@
 import random
 import re
 
+def main():
+    answer = wurdle_level()
+    return loop_de_loop(answer)
+
 file = open("words.txt")
 dict = file.read()
 dict = dict.lower().split()
@@ -55,10 +59,10 @@ def is_wurd_complete(wurd, guesses):
         return True
 
 
-def get_level():
-    print("\n***Wurdle***\n")
-    print("You have 8 attempts to pretend that this is the real Wordle.\n")
-    level = input("What difficulty setting do you want? Please enter easy, medium or hard.\n")
+def wurdle_level():
+    print("\n**************************************\n*************** Wurdle ***************\n**************************************\n")
+    print("You have 8 attempts to pretend that this is the real Wordle.\n\n\n")
+    level = input("Do you want to feel good about yourself or not? Choose easy, medium or hard.\n")
     level = level.lower()
     if level == 'easy':
         answer = random_wurd(easy_wurds(dict))
@@ -69,47 +73,43 @@ def get_level():
     return answer
 
 
-def gameplay_loop(answer):
+def loop_de_loop(answer):
     guesses = []
     fails = 0
-    print("You're looking for a wurd with {} letters.".format(len(answer)))
+    print("\nYou're looking for a wurd with {} letters.\n".format(len(answer)))
     while is_wurd_complete(answer, guesses) == False:
-        current_guess = (input("Okay, take a guess!\n")).lower()
+        current_guess = (input("Cool, take a guess.\n\n")).lower()
         if len(current_guess) > 1:
             print("One letter only. plz and thx.")
         elif current_guess not in guesses:
             if current_guess not in answer:
-                print("That letter isn't in your wurd.")
+                print("That letter isn't in your wurd.\n")
                 fails += 1
             else:
-                print("Nice! That letter is in your wurd.")
+                print("Nice! That letter is in your wurd.\n")
         else:
-            print("You already guessed that letter.")
+            print("Come on, you already guessed that letter.\n")
         guesses.append(current_guess)
         print(display_wurd(answer, guesses))
-        print("These are your guesses so far: {}".format(guesses))
-        print("You have {} guesses left.\n".format(8 - fails))
+        print("These are your guesses so far: {}\n".format(guesses))
+        print("-> You have {} guesses left<-\n".format(8 - fails))
         if fails >= 8:
             break
     if fails >= 8:
-        play_again_lose = input(("You lose! The wurd was {}. If you want to play again, enter yes or no.\n".format(answer)))
-        play_again_lose.lower()
-        if play_again_lose == 'yes':
+        wurdle_lose = input(("You lose! The wurd was {}.\nDo you want to play again? enter yes or no.\n\n".format(answer)))
+        wurdle_lose.lower()
+        if wurdle_lose == 'yes':
+            return main()
+        else:
+            print("Raddddd")
+    else:
+        wurdle_win = input(("You won! Play again? enter yes or no.\n"))
+        wurdle_win.lower()
+        if wurdle_win == 'yes':
             return main()
         else:
             print("Okay fine")
-    else:
-        play_again_win = input(("You won! Do you want to play again? enter yes or no.\n"))
-        play_again_win.lower()
-        if play_again_win == 'yes':
-            return main()
-        else:
-            print("Rad")
 
-
-def main():
-    answer = get_level()
-    return gameplay_loop(answer)
 
 if __name__ == '__main__':
     main()

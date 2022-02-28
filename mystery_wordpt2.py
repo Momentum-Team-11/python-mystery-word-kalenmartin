@@ -1,54 +1,54 @@
-import string
-from random import choice
+# import string
+# from random import choice
 
-from pyparsing import empty
+# from pyparsing import empty
 
-def play_game():
-    import random
-print("\n***Wurdle***\n")
-print("You have 8 attempts to pretend that this is the real Wordle. Type quit to end the game.\n\n\n")
-import random
+# def play_game():
+#     import random
+# print("\n***Wurdle***\n")
+# print("You have 8 attempts to pretend that this is the real Wordle. Type quit to end the game.\n\n\n")
+# import random
 
-wurds = []
+# wurds = []
 
-underscores = []
-end_game = False
-guess_turns = 8
-incorrect_guesses = []
-global wurdle_wurds
-
-
-with open('words.txt') as file:
-    strings = file.readlines()
-    for string in strings:
-        wurds.append(string)
-    wurdle_wurds = random.choice(wurds)
-    wurdle_wurds = wurdle_wurds.replace("\n", "")
-
-    wurdle_display = range(len(wurdle_wurds))
-    for num in wurdle_display:
-        underscores.append('_')
-    underscores = "".join(underscores)
-
-    print("_".join(underscores))
-    wurdle_display = ["_"] * len(wurdle_wurds)
-    print(f"Your word is {len(wurdle_wurds)} letters long.")
+# underscores = []
+# end_game = False
+# guess_turns = 8
+# incorrect_guesses = []
+# global wurdle_wurds
 
 
-def wurd_display(wurds,guesses):
-    wurdle_display = []
-    for letter in wurds:
-        if letter in guesses:
-            wurdle_display.append(letter)
-        else:
-            wurdle_display.append('_')
-        wurdle_display = ' '.join(wurdle_display)
-        wurdle_display = wurdle_display.upper()
-        return wurdle_display
+# with open('words.txt') as file:
+#     strings = file.readlines()
+#     for string in strings:
+#         wurds.append(string)
+#     wurdle_wurds = random.choice(wurds)
+#     wurdle_wurds = wurdle_wurds.replace("\n", "")
+
+#     wurdle_display = range(len(wurdle_wurds))
+#     for num in wurdle_display:
+#         underscores.append('_')
+#     underscores = "".join(underscores)
+
+#     print("_".join(underscores))
+#     wurdle_display = ["_"] * len(wurdle_wurds)
+#     print(f"Your word is {len(wurdle_wurds)} letters long.")
 
 
-def complete_wurd(wurds, guesses):
-    wurdle = wurd_display(wurds, guesses)
+# def wurd_display(wurds,guesses):
+#     wurdle_display = []
+#     for letter in wurds:
+#         if letter in guesses:
+#             wurdle_display.append(letter)
+#         else:
+#             wurdle_display.append('_')
+#         wurdle_display = ' '.join(wurdle_display)
+#         wurdle_display = wurdle_display.upper()
+#         return wurdle_display
+
+
+# def complete_wurd(wurds, guesses):
+#     wurdle = wurd_display(wurds, guesses)
     
 
 
