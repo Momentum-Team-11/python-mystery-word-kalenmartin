@@ -62,7 +62,7 @@ def is_wurd_complete(wurd, guesses):
 def wurdle_level():
     print("\n**************************************\n*************** Wurdle ***************\n**************************************\n")
     print("You have 8 attempts to pretend that this is the real Wordle.\n\n\n")
-    level = input("Do you want to feel good about yourself or not? Choose easy, medium or hard.\n")
+    level = input("Do you want to feel good about yourself or not? Choose easy, medium, or hard.\n")
     level = level.lower()
     if level == 'easy':
         answer = random_wurd(easy_wurds(dict))
@@ -103,7 +103,7 @@ def loop_de_loop(answer):
         else:
             print("Raddddd")
     else:
-        wurdle_win = input(("You won! Play again? enter yes or no.\n"))
+        wurdle_win = input(("You won the Wurdle! Play again? enter yes or no.\n"))
         wurdle_win.lower()
         if wurdle_win == 'yes':
             return main()
